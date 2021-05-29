@@ -1,1 +1,55 @@
+import java.io.*;
+import java.text.DecimalFormat;
 
+public class BMI
+{	
+	public static void main (String[] args) throws IOException
+	{
+		InputStreamReader isr=new InputStreamReader(System.in);
+		BufferedReader A=new BufferedReader(isr);
+		double x,y;
+		do{
+			System.out.print("請輸入身高(1~250公分): ");
+			x=(Double.parseDouble(A.readLine()))/100.0;
+			if(x>2.5){
+				System.out.println("你真的超過250公分嗎...");
+				System.out.println("是不是輸入錯了，在輸入一次吧...");
+			}
+			if(x==0){
+				System.out.println("身高會是0嗎...");
+				System.out.println("是不是輸入錯了，在輸入一次吧...");
+			}
+			if(x<0){
+				System.out.println("身高會有負的嗎...");
+				System.out.println("是不是輸入錯了，在輸入一次吧...");
+			}
+		}while (x>2.5 || x<=0);
+		
+		do{
+			System.out.print("請輸入體重(1~300公斤): ");
+			y=Double.parseDouble(A.readLine());
+			if(y>300){
+				System.out.println("你真的超過300公斤嗎...");
+				System.out.println("是不是輸入錯了，在輸入一次吧...");
+			}
+			if(y==0){
+				System.out.println("體重會是0嗎...");
+				System.out.println("是不是輸入錯了，在輸入一次吧...");
+			}
+			if(y<0){
+				System.out.println("體重會有負的嗎...");
+				System.out.println("是不是輸入錯了，在輸入一次吧...");
+			}
+		}while (y>300 || y<=0);
+		DecimalFormat df = new DecimalFormat("##.0");
+		double BMI=Double.parseDouble(df.format(y/(x*x)));
+		System.out.println("BMI="+BMI);
+		if(BMI < 18.5)
+			System.out.print("體位過輕，該吃胖一點瞜!");
+		if(BMI>=18.5 && BMI<=24)
+			System.out.print("體位正常，恭喜~您很正常!");
+		if(BMI>24)
+			System.out.print("體位過重，該減肥一下瞜!");
+			
+	}
+}
