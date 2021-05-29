@@ -1,1 +1,24 @@
 
+import java.io.*;
+public class A5_2 //終極密碼
+{
+	public static void main(String[] args)throws IOException 
+	{
+			BufferedReader a=new BufferedReader(new InputStreamReader(System.in));	
+			int x=(int)(Math.random()*100+1),y,min=1,max=100,g=0;
+			do{
+				System.out.println("終極密碼範圍是:"+min+"~"+max);
+				System.out.print("請猜數字: ");
+				y=Integer.parseInt(a.readLine());
+				g++;		
+				if(x!=y)
+				{										
+					if(y>x)
+							max=y;
+					else
+							min=y;
+				}
+			}while(x!=y);		
+System.out.println("猜對了!答案是:"+x+"\n你猜錯:"+g+"次"+"\n遊戲結束瞜!");
+	}
+}
